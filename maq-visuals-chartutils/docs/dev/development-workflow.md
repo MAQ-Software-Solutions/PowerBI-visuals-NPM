@@ -54,7 +54,7 @@ We use [TSLint](https://github.com/palantir/tslint) as a linter for TypeScript c
 npm run lint
 ```
 
-This command checks style of TypeScript code and provides a list of problems. Please address all of problems reported by TSLint before sending a pull request to the [repository](https://github.com/maqsoftware/PowerBI-visuals/tree/master/packages/maq-visuals-chartutils).
+This command checks style of TypeScript code and provides a list of problems. Please address all of problems reported by TSLint before sending a pull request to the [repository](https://github.com/MAQ-Software-Solutions/PowerBI-visuals-NPM/tree/master/packages/maq-visuals-chartutils).
 
 ## How to run unit tests locally
 We use [Jasmine](https://github.com/jasmine/jasmine) and [Karma](https://github.com/karma-runner/karma) to run unit tests. Please note, Karma requires Google Chrome to run unit tests.
