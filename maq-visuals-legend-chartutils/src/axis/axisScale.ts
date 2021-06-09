@@ -24,5 +24,7 @@
  *  THE SOFTWARE.
  */
 
-export const linear: string = "linear";
-export const log: string = "log";
+module powerbi.extensibility.utils.chart.axis.scale {
+    export const linear: string = "linear";
+    export const log: string = "log";
+}

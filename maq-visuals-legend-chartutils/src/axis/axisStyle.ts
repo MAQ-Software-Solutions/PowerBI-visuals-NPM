@@ -24,6 +24,8 @@
  *  THE SOFTWARE.
  */
 
-export const showBoth: string = "showBoth";
-export const showTitleOnly: string = "showTitleOnly";
-export const showUnitOnly: string = "showUnitOnly";
+module powerbi.extensibility.utils.chart.axis.style {
+    export const showBoth: string = "showBoth";
+    export const showTitleOnly: string = "showTitleOnly";
+    export const showUnitOnly: string = "showUnitOnly";
+}
