@@ -1364,7 +1364,7 @@ export class SVGLegend implements ILegend {
             totalSpaceOccupiedThusFar += spaceNeededByTitle;
         }
         for (let index = 0; index < dataPoints.length; index++) {
-            if (dataPoints[index]["secondaryMeasure"] !== "") {
+            if (dataPoints[index]["secondaryMeasure"] && dataPoints[index]["secondaryMeasure"] !== "") {
                 this.secondaryExists = 1;
                 break;
             }

@@ -9,6 +9,7 @@ Learn how to install and use the chartutils in your custom visuals:
 > Added option to include primary measure in legend
 > Update ChartUtils to include updated interactivity utils package
 > Update ChartUtils to support latest API with primary measure in legend
+> Update ChartUtils to fix issue related to secondary measure in legend
 
 ## License
 See the [LICENSE](./LICENSE) file for license rights and limitations (MIT).
