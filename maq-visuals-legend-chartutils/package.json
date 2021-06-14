@@ -1,6 +1,6 @@
 {
   "name": "maq-visuals-legend-chartutils",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "ChartUtils",
   "main": "lib/index.js",
   "module": "lib/index.js",
