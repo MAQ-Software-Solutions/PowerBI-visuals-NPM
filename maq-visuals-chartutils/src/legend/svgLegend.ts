@@ -543,59 +543,36 @@ export class SVGLegend implements ILegend {
     }
 
     private calculateTitleLayout(title: string): TitleLayout {
-        const legendOffset = 10;
         let width = 0,
             hasTitle = !!title;
+
         if (hasTitle) {
-            let isHorizontal = this.isTopOrBottom(this.orientation),
-                maxMeasureLength = void 0;
-            if (isHorizontal) {
-                let fontSizeMargin =
-                    this.legendFontSizeMarginValue > SVGLegend.DefaultTextMargin
-                        ? SVGLegend.TextAndIconPadding + this.legendFontSizeMarginDifference
-                        : SVGLegend.TextAndIconPadding;
-                let fixedHorizontalIconShift = SVGLegend.TextAndIconPadding + SVGLegend.LegendIconRadius;
-                let fixedHorizontalTextShift = SVGLegend.LegendIconRadius + fontSizeMargin + fixedHorizontalIconShift;
-                maxMeasureLength =
-                    this.parentViewport.width * SVGLegend.LegendMaxWidthFactor -
-                    fixedHorizontalTextShift -
-                    SVGLegend.LegendEdgeMariginWidth;
-            } else {
-                maxMeasureLength =
-                    this.legendFontSizeMarginValue < SVGLegend.DefaultTextMargin
-                        ? SVGLegend.MaxTitleLength
-                        : SVGLegend.MaxTitleLength +
-                        SVGLegend.DefaultMaxLegendFactor * this.legendFontSizeMarginDifference;
-            }
-            let textProperties = SVGLegend.getTextProperties(true, title, this.data.fontSize);
+            let isHorizontal = this.isTopOrBottom(this.orientation);
+            let fontSize = this.data.fontSize;
+            let textProperties: TextProperties = {
+                text: title,
+                fontSize: `${fontSize}pt`,
+                fontFamily: "Segoe UI"
+            };
             let text = title;
-
-            let titleWidth = textMeasurementService.measureSvgTextWidth(textProperties);
-
-            width = titleWidth;
-            if (titleWidth > maxMeasureLength) {
-                text = textMeasurementService.getTailoredTextOrDefault(textProperties, maxMeasureLength);
-                width = maxMeasureLength;
-            }
+            width = textMeasurementService.measureSvgTextWidth(textProperties);
 
             if (isHorizontal) {
                 width += SVGLegend.TitlePadding;
             }
-            // Adding primary title and secondary title when legend is either on left or right
             else {
-                let legendWidth = parseFloat(this.svg.style("width"));
-                if (width < maxMeasureLength) {
-                    text = textMeasurementService.getTailoredTextOrDefault(textProperties, legendWidth);
-                }
+                text = textMeasurementService.getTailoredTextOrDefault(textProperties, this.viewport.width);
             }
+
             return {
+                text,
+                width,
                 x: 0,
                 y: 0,
-                text: text,
-                width: width,
-                height: textMeasurementService.estimateSvgTextHeight(textProperties),
+                height: textMeasurementService.estimateSvgTextHeight(textProperties)
             };
         }
+
         return null;
     }
 
@@ -1041,11 +1018,11 @@ export class SVGLegend implements ILegend {
                 if (this.showPrimary) {
                     dp.measure = textMeasurementService.getTailoredTextOrDefault(
                         SVGLegend.getTextProperties(false, dp.measure, this.data.fontSize),
-                        maxHorizontalSpaceAvaliable - 18
+                        maxHorizontalSpaceAvaliable
                     );
                     dp["secondaryMeasure"] = textMeasurementService.getTailoredTextOrDefault(
                         SVGLegend.getTextProperties(false, dp["secondaryMeasure"], this.data.fontSize),
-                        maxHorizontalSpaceAvaliable - 18
+                        maxHorizontalSpaceAvaliable
                     );
                 }
             }
