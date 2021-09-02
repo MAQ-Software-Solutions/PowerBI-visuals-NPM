@@ -7,7 +7,6 @@
     "ChartUtils"
   ],
   "repository": {
-    "type": "git",
     "url": "https://github.com/MAQ-Software-Solutions/PowerBI-visuals-NPM.git",
     "directory": "maq-utils-chartutils"
   },
